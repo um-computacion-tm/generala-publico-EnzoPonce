@@ -1,3 +1,5 @@
+import yaml
+
 class TurnoError(Exception):
     pass
 
@@ -124,6 +126,7 @@ class TablaPuntos:
             }
             for _ in range(cantidad_jugadores)
         ]
+        
 
     @property
     def estado_tabla(self):
@@ -186,19 +189,19 @@ class Generala:
 
 
 def main():
-    cantidad_jugadores = int(input('cantidad jugadores'))
+    cantidad_jugadores = int(input('cantidad jugadores: '))
     juego = Generala(cantidad_jugadores)
     while juego.esta_jugado:
         while juego.jugador_esta_jugando:
             print('jugador actual: {}'.format(juego.jugador_actual))
             print(juego.turno_actual.dados_finales)
-            dados_seguir = input('Elija los dados con los que quiere seguir o presione enter para finalizar el turno.')
+            dados_seguir = input('Elija los dados con los que quiere seguir o presione enter para finalizar el turno. ')
             juego.dados_finales(dados_seguir)
         print('jugador actual: {}'.format(juego.jugador_actual))
         print(juego.turno_actual.dados_finales)
-        jugada = input('¿Que jugada quiere anotar?')
+        jugada = input('¿Que jugada quiere anotar? ')
         print(juego.anotar(jugada))
-        print(juego.tabla_puntos._tabla)
+        print(yaml.dump(juego.tabla_puntos._tabla))
 
 
 if __name__ == '__main__':
