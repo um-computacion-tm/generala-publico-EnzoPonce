@@ -126,10 +126,6 @@ class TablaPuntos:
             }
             for _ in range(cantidad_jugadores)
         ]
-<<<<<<< HEAD
-=======
-        
->>>>>>> 8db90603168a98a500c903090f398e5823969d39
 
     @property
     def estado_tabla(self):
